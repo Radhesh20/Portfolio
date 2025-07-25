@@ -1,75 +1,82 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { 
+  Code, 
+  Smartphone, 
+  Palette, 
+  Database, 
+  Cloud, 
+  Globe,
+  Cpu,
+  Monitor,
+  Server,
+  Layers,
+  GitBranch,
+  Figma
+} from 'lucide-react';
 
 const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
 
   const skillCategories = [
     {
       title: 'Programming Languages',
+      icon: <Code className="w-8 h-8" />,
       skills: [
-        { name: 'Java', level: 90 },
-        { name: 'Python', level: 85 },
-        { name: 'JavaScript', level: 80 },
-        { name: 'Dart', level: 75 },
+        { name: 'Java', icon: <Cpu className="w-6 h-6" /> },
+        { name: 'Python', icon: <Code className="w-6 h-6" /> },
+        { name: 'JavaScript', icon: <Globe className="w-6 h-6" /> },
+        { name: 'Dart', icon: <Smartphone className="w-6 h-6" /> },
       ]
     },
     {
       title: 'Web Development',
+      icon: <Globe className="w-8 h-8" />,
       skills: [
-        { name: 'HTML/CSS', level: 90 },
-        { name: 'React.js', level: 85 },
-        { name: 'Node.js', level: 80 },
-        { name: 'Express.js', level: 75 },
+        { name: 'HTML/CSS', icon: <Monitor className="w-6 h-6" /> },
+        { name: 'React.js', icon: <Layers className="w-6 h-6" /> },
+        { name: 'Node.js', icon: <Server className="w-6 h-6" /> },
+        { name: 'Express.js', icon: <Server className="w-6 h-6" /> },
       ]
     },
     {
       title: 'Mobile Development',
+      icon: <Smartphone className="w-8 h-8" />,
       skills: [
-        { name: 'Android (Java)', level: 90 },
-        { name: 'Flutter', level: 85 },
-        { name: 'React Native', level: 70 },
+        { name: 'Android (Java)', icon: <Smartphone className="w-6 h-6" /> },
+        { name: 'Flutter', icon: <Smartphone className="w-6 h-6" /> },
+        { name: 'React Native', icon: <Smartphone className="w-6 h-6" /> },
       ]
     },
     {
       title: 'Backend & Databases',
+      icon: <Database className="w-8 h-8" />,
       skills: [
-        { name: 'MySQL', level: 85 },
-        { name: 'Spring Boot', level: 75 },
-        { name: 'MongoDB', level: 70 },
-        { name: 'Firebase', level: 80 },
+        { name: 'MySQL', icon: <Database className="w-6 h-6" /> },
+        { name: 'Spring Boot', icon: <Server className="w-6 h-6" /> },
+        { name: 'MongoDB', icon: <Database className="w-6 h-6" /> },
+        { name: 'Firebase', icon: <Cloud className="w-6 h-6" /> },
       ]
     },
     {
       title: 'Design & Tools',
+      icon: <Palette className="w-8 h-8" />,
       skills: [
-        { name: 'Figma', level: 85 },
-        { name: 'Adobe Creative Suite', level: 80 },
-        { name: 'Git/GitHub', level: 85 },
-        { name: 'AWS', level: 70 },
+        { name: 'Figma', icon: <Figma className="w-6 h-6" /> },
+        { name: 'Adobe Creative Suite', icon: <Palette className="w-6 h-6" /> },
+        { name: 'Git/GitHub', icon: <GitBranch className="w-6 h-6" /> },
+        { name: 'AWS', icon: <Cloud className="w-6 h-6" /> },
       ]
     }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="skills" ref={sectionRef} className="py-20 bg-gray-900">
+    <section id="skills" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/5 rounded-full blur-2xl"></div>
+      </div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -85,27 +92,28 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
-              className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-gray-700 hover:border-cyan-400/50 transition-all duration-300"
+              className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover:border-cyan-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/10"
             >
-              <h3 className="text-xl font-bold text-cyan-400 mb-6 text-center">
+              <div className="flex items-center justify-center mb-6">
+                <div className="p-3 bg-gradient-to-br from-cyan-500/20 to-pink-500/20 rounded-xl text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+                  {category.icon}
+                </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-8 text-center group-hover:text-cyan-400 transition-colors duration-300">
                 {category.title}
               </h3>
               
-              <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300 font-medium">{skill.name}</span>
-                      <span className="text-cyan-400 text-sm font-semibold">{skill.level}%</span>
+                  <div 
+                    key={skillIndex} 
+                    className="flex flex-col items-center p-4 bg-gray-800/30 rounded-xl hover:bg-gray-700/30 transition-all duration-300 hover:transform hover:scale-105"
+                  >
+                    <div className="text-cyan-400 mb-3 group-hover:text-pink-400 transition-colors duration-300">
+                      {skill.icon}
                     </div>
-                    <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-cyan-400 to-pink-500 rounded-full transition-all duration-1000 ease-out"
-                        style={{
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          transitionDelay: `${categoryIndex * 200 + skillIndex * 100}ms`
-                        }}
-                      />
+                    <div className="text-center">
+                      <span className="text-gray-300 font-medium text-sm">{skill.name}</span>
                     </div>
                   </div>
                 ))}
@@ -125,10 +133,7 @@ const Skills = () => {
             ].map((skill, index) => (
               <span
                 key={index}
-                className={`px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-700 text-gray-300 rounded-full text-sm font-medium border border-gray-600 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300 ${
-                  isVisible ? 'animate-fade-in' : 'opacity-0'
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="px-6 py-3 bg-gradient-to-r from-gray-800/50 to-gray-700/50 backdrop-blur-sm text-gray-300 rounded-full text-sm font-medium border border-gray-600/50 hover:border-cyan-400/50 hover:text-cyan-400 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-pink-500/10 transition-all duration-300 transform hover:scale-105"
               >
                 {skill}
               </span>

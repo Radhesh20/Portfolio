@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Settings } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
-interface NavigationProps {
-  onDashboardClick: () => void;
-}
-
-const Navigation: React.FC<NavigationProps> = ({ onDashboardClick }) => {
+const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -55,7 +51,7 @@ const Navigation: React.FC<NavigationProps> = ({ onDashboardClick }) => {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50' 
+          ? 'bg-gray-900/90 backdrop-blur-xl border-b border-gray-700/30 shadow-lg' 
           : 'bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,25 +81,11 @@ const Navigation: React.FC<NavigationProps> = ({ onDashboardClick }) => {
                     {item.label}
                   </button>
                 ))}
-                <button
-                  onClick={onDashboardClick}
-                  className="p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-200"
-                  title="Dashboard"
-                >
-                  <Settings size={18} />
-                </button>
               </div>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center space-x-2">
-              <button
-                onClick={onDashboardClick}
-                className="p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-200"
-                title="Dashboard"
-              >
-                <Settings size={18} />
-              </button>
+            <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -120,7 +102,7 @@ const Navigation: React.FC<NavigationProps> = ({ onDashboardClick }) => {
             ? 'max-h-96 opacity-100' 
             : 'max-h-0 opacity-0 overflow-hidden'
         }`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-900/90 backdrop-blur-md border-b border-gray-700/50">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-900/95 backdrop-blur-xl border-b border-gray-700/30">
             {navItems.map((item) => (
               <button
                 key={item.id}

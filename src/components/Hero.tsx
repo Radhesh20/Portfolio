@@ -5,7 +5,7 @@ const Hero = () => {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  const [typingSpeed, setTypingSpeed] = useState(100);
 
   const words = ['Full-Stack Developer', 'Mobile App Engineer', 'UI/UX Designer', 'Problem Solver'];
 
@@ -19,10 +19,10 @@ const Hero = () => {
         : fullText.substring(0, text.length + 1)
       );
 
-      setTypingSpeed(isDeleting ? 30 : 150);
+      setTypingSpeed(isDeleting ? 20 : 100);
 
       if (!isDeleting && text === fullText) {
-        setTimeout(() => setIsDeleting(true), 500);
+        setTimeout(() => setIsDeleting(true), 300);
       } else if (isDeleting && text === '') {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
@@ -41,10 +41,10 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20"></div>
         
         {/* Floating Particles */}
-        {[...Array(50)].map((_, i) => (
+        {/*[...Array(50)].map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
@@ -55,18 +55,19 @@ const Hero = () => {
               animationDuration: `${3 + Math.random() * 4}s`
             }}
           />
-        ))}
+        ))*/}
         
         {/* Geometric Shapes */}
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 border border-cyan-400/20 rotate-45 animate-spin animation-duration-[20s]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 border border-pink-500/20 rotate-12 animate-pulse"></div>
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 border-2 border-cyan-400/30 rotate-45 animate-spin" style={{ animationDuration: '5s' }}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 border-2 border-pink-500/30 rotate-12 animate-spin" style={{ animationDuration: '3s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-16 h-16 border border-purple-400/20 animate-pulse"></div>
       </div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="space-y-8 animate-fade-in">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
-            <span className="block text-white mb-2">RADHESH</span>
-            <span className="block bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold whitespace-nowrap"> {/* Added whitespace-nowrap to prevent wrapping */}
+            <span className="text-white tracking-tight">RADHESH</span>{' '} {/* Removed 'block' and added a space */}
+            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-tight">
               KUMAR
             </span>
           </h1>

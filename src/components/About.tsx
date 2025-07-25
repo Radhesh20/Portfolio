@@ -59,7 +59,7 @@ const About = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Location</span>
-                  <span className="text-cyan-400 font-semibold">Perundhurai, India</span>
+                  <span className="text-cyan-400 font-semibold">Trichy, India</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Education</span>

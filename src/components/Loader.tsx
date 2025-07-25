@@ -29,7 +29,7 @@ const Loader = () => {
     <div className="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 animate-pulse"></div>
-        {[...Array(20)].map((_, i) => (
+        {/*[...Array(20)].map((_, i) => (
           <div
             key={i}
             className="absolute w-2 h-2 bg-cyan-400 rounded-full animate-pulse"
@@ -40,7 +40,7 @@ const Loader = () => {
               animationDuration: `${2 + Math.random() * 3}s`
             }}
           />
-        ))}
+        ))*/}
       </div>
       
       <div className="relative z-10 text-center">

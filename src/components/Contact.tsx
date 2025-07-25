@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle, Instagram, FileText, Github } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,9 +22,18 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Create mailto link with form data
+    const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio');
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:radheshkumar2004@gmail.com?subject=${subject}&body=${body}`;
     
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    await new Promise(resolve => setTimeout(resolve, 1000));
     setIsSubmitted(true);
     setIsSubmitting(false);
     
@@ -51,7 +60,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Location',
-      value: 'Perundhurai, India',
+      value: 'Trichy, India',
       href: '#'
     },
     {
@@ -62,8 +71,47 @@ const Contact = () => {
     }
   ];
 
+  const socialLinks = [
+    {
+      icon: <Linkedin className="w-5 h-5" />,
+      href: 'https://linkedin.com/in/radheshkumarkm',
+      label: 'LinkedIn',
+      color: 'hover:bg-blue-600'
+    },
+    {
+      icon: <Github className="w-5 h-5" />,
+      href: 'https://github.com/Radhesh20',
+      label: 'GitHub',
+      color: 'hover:bg-gray-700'
+    },
+    {
+      icon: <Instagram className="w-5 h-5" />,
+      href: 'https://instagram.com/radhesh_kumar_km',
+      label: 'Instagram',
+      color: 'hover:bg-pink-600'
+    },
+    {
+      icon: <FileText className="w-5 h-5" />,
+      href: 'https://medium.com/@radheshkumar2004',
+      label: 'Medium',
+      color: 'hover:bg-green-600'
+    },
+    {
+      icon: <Mail className="w-5 h-5" />,
+      href: 'mailto:radheshkumar2004@gmail.com',
+      label: 'Email',
+      color: 'hover:bg-red-600'
+    }
+  ];
+
   return (
-    <section id="contact" className="py-20 bg-gray-800/50">
+    <section id="contact" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
+      </div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -129,13 +177,13 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
+          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50">
             {isSubmitted ? (
               <div className="text-center py-16">
                 <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-6" />
                 <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
                 <p className="text-gray-400">
-                  Thank you for reaching out. I'll get back to you within 24 hours.
+                  Your email client should open shortly. Thank you for reaching out!
                 </p>
               </div>
             ) : (
@@ -152,7 +200,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 bg-gray-700/50 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200"
                       placeholder="John Doe"
                     />
                   </div>
@@ -167,7 +215,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 bg-gray-700/50 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -184,7 +232,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 bg-gray-700/50 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200"
                     placeholder="Project Inquiry"
                   />
                 </div>
@@ -200,7 +248,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200 resize-none"
+                    className="w-full px-4 py-3 bg-gray-700/50 backdrop-blur-sm border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200 resize-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>

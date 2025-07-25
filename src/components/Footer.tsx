@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Code, Linkedin, Github, Mail, Phone } from 'lucide-react';
+import { Heart, Code, Linkedin, Github, Mail, Phone, Instagram, FileText } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,6 +14,16 @@ const Footer = () => {
       icon: <Github size={20} />,
       href: 'https://github.com/Radhesh20',
       label: 'GitHub'
+    },
+    {
+      icon: <Instagram size={20} />,
+      href: 'https://instagram.com/radhesh_kumar_km',
+      label: 'Instagram'
+    },
+    {
+      icon: <FileText size={20} />,
+      href: 'https://medium.com/@radheshkumar2004',
+      label: 'Medium'
     },
     {
       icon: <Mail size={20} />,
@@ -40,7 +50,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
+    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-t border-gray-700/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
@@ -90,24 +100,24 @@ const Footer = () => {
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
-                <span className="text-sm">Perundhurai, India</span>
+                <span className="text-sm">Trichy, India</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-800 pt-8">
+        <div className="border-t border-gray-700/50 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap justify-center gap-4">
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-gray-800 text-gray-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-all duration-300 transform hover:scale-110"
+                  className="p-3 bg-gray-800/50 backdrop-blur-sm text-gray-400 rounded-lg hover:bg-cyan-500 hover:text-white transition-all duration-300 transform hover:scale-110 border border-gray-700/50 hover:border-cyan-400/50"
                   title={link.label}
                 >
                   {link.icon}

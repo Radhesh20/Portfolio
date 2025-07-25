@@ -168,27 +168,6 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Testimonial Thumbnails */}
-        <div className="flex justify-center mt-12 space-x-4 overflow-x-auto pb-4">
-          {testimonials.map((testimonial, index) => (
-            <button
-              key={testimonial.id}
-              onClick={() => setCurrentIndex(index)}
-              className={`flex-shrink-0 p-4 rounded-xl transition-all duration-300 ${
-                index === currentIndex
-                  ? 'bg-cyan-500/20 border-2 border-cyan-400'
-                  : 'bg-gray-800 border-2 border-transparent hover:border-gray-600'
-              }`}
-            >
-              <img
-                src={testimonial.avatar}
-                alt={testimonial.name}
-                className="w-12 h-12 rounded-full object-cover mx-auto mb-2"
-              />
-              <p className="text-xs text-gray-400 text-center">{testimonial.name}</p>
-            </button>
-          ))}
-        </div>
       </div>
     </section>
   );

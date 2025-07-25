@@ -10,8 +10,8 @@ const Projects = () => {
     { id: 'web-development', name: 'Website Design & Dev' },
     { id: 'app-development', name: 'App Design & Dev' },
     { id: 'ui-design', name: 'Logo Design' },
-    { id: 'social-media', name: 'Instagram Post Design' },
-    { id: 'print-design', name: 'Business Cards' },
+    { id: 'social-media', name: 'Social Media Posts' },
+    { id: 'print-design', name: 'Posters' },
     { id: 'video-design', name: 'YouTube Thumbnails' }
   ];
 
@@ -73,11 +73,33 @@ const Projects = () => {
     },
     {
       id: 6,
-      title: 'Social Media Campaign',
+      title: 'Social Media Posts',
       category: 'social-media',
-      description: 'Engaging Instagram post designs for digital marketing campaigns with high conversion rates.',
+      description: 'Engaging social media post designs for digital marketing campaigns with high conversion rates.',
       image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=400',
       technologies: ['Photoshop', 'Canva', 'Social Media Strategy'],
+      demoUrl: '',
+      githubUrl: '',
+      featured: false
+    },
+    {
+      id: 7,
+      title: 'Event Posters',
+      category: 'print-design',
+      description: 'Creative poster designs for events, conferences, and promotional campaigns.',
+      image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=400',
+      technologies: ['Adobe Photoshop', 'Illustrator', 'Print Design'],
+      demoUrl: '',
+      githubUrl: '',
+      featured: false
+    },
+    {
+      id: 8,
+      title: 'YouTube Thumbnails',
+      category: 'video-design',
+      description: 'Eye-catching YouTube thumbnail designs that increase click-through rates.',
+      image: 'https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=400',
+      technologies: ['Photoshop', 'Canva', 'Graphic Design'],
       demoUrl: '',
       githubUrl: '',
       featured: false
@@ -99,8 +121,24 @@ const Projects = () => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleProjectClick = (project) => {
+    // For design categories, show image popup
+    if (['ui-design', 'social-media', 'print-design', 'video-design'].includes(project.category)) {
+      setSelectedImage(project.image);
+    }
+    // For development projects, you can add navigation to demo/github
+  };
+
   return (
-    <section id="projects" className="py-20 bg-gray-800/50">
+    <section id="projects" className="py-20 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-32 right-20 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-32 left-20 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl"></div>
+      </div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -134,12 +172,11 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`group bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-gray-700 hover:border-cyan-400/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl ${
-                project.featured ? 'lg:col-span-2' : ''
-              }`}
+              className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-cyan-400/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/10 cursor-pointer h-96"
               style={{
                 animationDelay: `${index * 100}ms`
               }}
+              onClick={() => handleProjectClick(project)}
             >
               <div className="relative overflow-hidden">
                 <img
@@ -150,12 +187,14 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Project Links Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {(project.category === 'web-development' || project.category === 'app-development') && (
+                  <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {project.demoUrl && (
                     <a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="p-3 bg-cyan-500 text-white rounded-full hover:bg-cyan-600 transition-colors duration-200 transform hover:scale-110"
                     >
                       <ExternalLink size={20} />
@@ -166,21 +205,25 @@ const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="p-3 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors duration-200 transform hover:scale-110"
                     >
                       <Github size={20} />
                     </a>
                   )}
-                </div>
+                  </div>
+                )}
               </div>
 
-              <div className="p-6">
+              <div className="p-6 flex flex-col justify-between h-48">
+                <div>
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-200">
                   {project.title}
                 </h3>
                 <p className="text-gray-400 mb-4 line-clamp-3">
                   {project.description}
                 </p>
+                </div>
                 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -195,12 +238,14 @@ const Projects = () => {
                 </div>
 
                 {/* Project Links */}
-                <div className="flex space-x-4">
+                {(project.category === 'web-development' || project.category === 'app-development') && (
+                  <div className="flex space-x-4">
                   {project.demoUrl && (
                     <a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
                     >
                       <ExternalLink size={16} />
@@ -212,13 +257,15 @@ const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
                     >
                       <Github size={16} />
                       <span className="text-sm font-medium">Source Code</span>
                     </a>
                   )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -232,6 +279,28 @@ const Projects = () => {
           </div>
         )}
       </div>
+      
+      {/* Image Popup Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] w-full">
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 text-white hover:text-cyan-400 transition-colors duration-200"
+            >
+              <X size={32} />
+            </button>
+            <img
+              src={selectedImage}
+              alt="Project Preview"
+              className="w-full h-full object-contain rounded-lg shadow-2xl"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
