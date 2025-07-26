@@ -3,10 +3,10 @@ import { Code, Smartphone, Palette, Award } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { icon: <Code className="w-8 h-8" />, number: '50+', label: 'Projects Completed' },
-    { icon: <Smartphone className="w-8 h-8" />, number: '3+', label: 'Years Experience' },
-    { icon: <Palette className="w-8 h-8" />, number: '100+', label: 'Designs Created' },
-    { icon: <Award className="w-8 h-8" />, number: '25+', label: 'Happy Clients' },
+    { icon: <Code className="w-8 h-8" />, number: '5+', label: 'Projects Completed' },
+    { icon: <Smartphone className="w-8 h-8" />, number: '1+', label: 'Years Experience' },
+    { icon: <Palette className="w-8 h-8" />, number: '25+', label: 'Designs Created' },
+    { icon: <Award className="w-8 h-8" />, number: '5+', label: 'Happy Clients' },
   ];
 
   return (
