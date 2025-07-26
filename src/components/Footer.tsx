@@ -98,7 +98,7 @@ const Footer = () => {
 
             {/* Copyright */}
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
-              <span>© {currentYear} Radhesh Kumar. Made with</span>
+              <span>©{currentYear} Radhesh. Made with</span>
               <Heart size={16} className="text-red-800 animate-pulse" />
               <span>and lots of coffee</span>
               <Coffee size={16} className="text-amber-500 animate-pulse" />
