@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle, Instagram, FileText, Github } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Send, CheckCircle, Instagram, PenTool, FileText, Github, InstagramIcon } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -85,6 +85,12 @@ const Contact = () => {
       color: 'hover:bg-gray-700'
     },
     {
+      icon: <Instagram className="w-5 h-5" />,
+      href: 'https://instagram.com/radhesh_kumar_km',
+      label: 'Instagram',
+      color: 'hover:bg-pink-600'
+    },
+    {
       icon: <FileText className="w-5 h-5" />,
       href: 'https://medium.com/@radheshkumar2004',
       label: 'Medium',
@@ -154,7 +160,9 @@ const Contact = () => {
               <div className="flex space-x-4">
                 {[
                   { href: 'https://linkedin.com/in/radheshkumarkm', icon: <Linkedin size={20} /> },
-                  { href: 'https://github.com/Radhesh20', icon: <Mail size={20} /> },
+                  { href: 'https://github.com/Radhesh20', icon: <Github size={20} /> },
+                  { href: 'https://instagram.com/rxdhssh__', icon: <InstagramIcon size={20} /> },
+                  { href: 'https://radheshkumar2004.medium.com', icon: <PenTool size={20} /> },
                 ].map((social, index) => (
                   <a
                     key={index}
