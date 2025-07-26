@@ -1,40 +1,11 @@
 import React from 'react';
-import { Heart, Code, Linkedin, Github, Mail, Phone, Instagram, FileText } from 'lucide-react';
+import { Heart, Code, Linkedin, Github, Mail, Phone, CoffeeIcon, Instagram, FileText, Coffee } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    {
-      icon: <Linkedin size={20} />,
-      href: 'https://linkedin.com/in/radheshkumarkm',
-      label: 'LinkedIn'
-    },
-    {
-      icon: <Github size={20} />,
-      href: 'https://github.com/Radhesh20',
-      label: 'GitHub'
-    },
-    {
-      icon: <Instagram size={20} />,
-      href: 'https://instagram.com/radhesh_kumar_km',
-      label: 'Instagram'
-    },
-    {
-      icon: <FileText size={20} />,
-      href: 'https://medium.com/@radheshkumar2004',
-      label: 'Medium'
-    },
-    {
-      icon: <Mail size={20} />,
-      href: 'mailto:radheshkumar2004@gmail.com',
-      label: 'Email'
-    },
-    {
-      icon: <Phone size={20} />,
-      href: 'tel:+918220760051',
-      label: 'Phone'
-    }
+
   ];
 
   const quickLinks = [
@@ -127,9 +98,10 @@ const Footer = () => {
 
             {/* Copyright */}
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
-              <span>© {currentYear} Radhesh Kumar K M. Made with</span>
-              <Heart size={16} className="text-red-500 animate-pulse" />
+              <span>© {currentYear} Radhesh Kumar. Made with</span>
+              <Heart size={16} className="text-red-800 animate-pulse" />
               <span>and lots of coffee</span>
+              <Coffee size={16} className="text-amber-500 animate-pulse" />
             </div>
           </div>
         </div>
