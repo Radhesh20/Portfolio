@@ -85,12 +85,6 @@ const Contact = () => {
       color: 'hover:bg-gray-700'
     },
     {
-      icon: <Instagram className="w-5 h-5" />,
-      href: 'https://instagram.com/radhesh_kumar_km',
-      label: 'Instagram',
-      color: 'hover:bg-pink-600'
-    },
-    {
       icon: <FileText className="w-5 h-5" />,
       href: 'https://medium.com/@radheshkumar2004',
       label: 'Medium',
