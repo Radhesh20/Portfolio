@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ExternalLink, Github, Filter } from 'lucide-react';
+import { ExternalLink, Github, Filter, ChevronDown, ChevronUp, Eye } from 'lucide-react';
 
 const Projects = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
   const [projects, setProjects] = useState([]);
 
@@ -140,7 +141,8 @@ const Projects = () => {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        {/* Header with Toggle Button */}
+        <div className="text-center mb-8">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
             My <span className="bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">Projects</span>
           </h2>
@@ -148,136 +150,157 @@ const Projects = () => {
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Explore my diverse portfolio of projects across web development, mobile apps, and creative design
           </p>
+          
+          {/* Toggle Button */}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="mt-8 group flex items-center justify-center mx-auto px-8 py-4 bg-gradient-to-r from-cyan-500/20 to-pink-500/20 backdrop-blur-sm border border-cyan-400/30 rounded-full text-white font-semibold hover:from-cyan-500/30 hover:to-pink-500/30 hover:border-cyan-400/50 transition-all duration-300 transform hover:scale-105"
+          >
+            <Eye className="w-5 h-5 mr-3" />
+            <span>{isExpanded ? 'Hide Projects' : 'View My Projects'}</span>
+            {isExpanded ? (
+              <ChevronUp className="w-5 h-5 ml-3 group-hover:transform group-hover:-translate-y-1 transition-transform duration-200" />
+            ) : (
+              <ChevronDown className="w-5 h-5 ml-3 group-hover:transform group-hover:translate-y-1 transition-transform duration-200" />
+            )}
+          </button>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveFilter(category.id)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
-                activeFilter === category.id
-                  ? 'bg-gradient-to-r from-cyan-500 to-pink-500 text-white shadow-lg'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-600'
-              }`}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-cyan-400/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/10 cursor-pointer h-96"
-              style={{
-                animationDelay: `${index * 100}ms`
-              }}
-              onClick={() => handleProjectClick(project)}
-            >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                {/* Project Links Overlay */}
-                {(project.category === 'web-development' || project.category === 'app-development') && (
-                  <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="p-3 bg-cyan-500 text-white rounded-full hover:bg-cyan-600 transition-colors duration-200 transform hover:scale-110"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="p-3 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors duration-200 transform hover:scale-110"
-                    >
-                      <Github size={20} />
-                    </a>
-                  )}
-                  </div>
-                )}
-              </div>
-
-              <div className="p-6 flex flex-col justify-between h-48">
-                <div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-200">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-                </div>
-                
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-gray-700 text-cyan-400 text-xs rounded-full font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Project Links */}
-                {(project.category === 'web-development' || project.category === 'app-development') && (
-                  <div className="flex space-x-4">
-                  {project.demoUrl && (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                    >
-                      <ExternalLink size={16} />
-                      <span className="text-sm font-medium">Live Demo</span>
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
-                    >
-                      <Github size={16} />
-                      <span className="text-sm font-medium">Source Code</span>
-                    </a>
-                  )}
-                  </div>
-                )}
-              </div>
+        {/* Collapsible Content */}
+        <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
+          isExpanded ? 'max-h-none opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="pt-8">
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveFilter(category.id)}
+                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
+                    activeFilter === category.id
+                      ? 'bg-gradient-to-r from-cyan-500 to-pink-500 text-white shadow-lg'
+                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-600'
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-16">
-            <Filter className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-400 mb-2">No projects found</h3>
-            <p className="text-gray-500">Try selecting a different category or check back later.</p>
+            {/* Projects Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-cyan-400/50 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/10 cursor-pointer h-96"
+                  style={{
+                    animationDelay: `${index * 100}ms`
+                  }}
+                  onClick={() => handleProjectClick(project)}
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    {/* Project Links Overlay */}
+                    {(project.category === 'web-development' || project.category === 'app-development') && (
+                      <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {project.demoUrl && (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-3 bg-cyan-500 text-white rounded-full hover:bg-cyan-600 transition-colors duration-200 transform hover:scale-110"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-3 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors duration-200 transform hover:scale-110"
+                        >
+                          <Github size={20} />
+                        </a>
+                      )}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="p-6 flex flex-col justify-between h-48">
+                    <div>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-200">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-400 mb-4 line-clamp-3">
+                      {project.description}
+                    </p>
+                    </div>
+                    
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-gray-700 text-cyan-400 text-xs rounded-full font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Project Links */}
+                    {(project.category === 'web-development' || project.category === 'app-development') && (
+                      <div className="flex space-x-4">
+                      {project.demoUrl && (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
+                        >
+                          <ExternalLink size={16} />
+                          <span className="text-sm font-medium">Live Demo</span>
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
+                        >
+                          <Github size={16} />
+                          <span className="text-sm font-medium">Source Code</span>
+                        </a>
+                      )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {filteredProjects.length === 0 && (
+              <div className="text-center py-16">
+                <Filter className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-400 mb-2">No projects found</h3>
+                <p className="text-gray-500">Try selecting a different category or check back later.</p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
       
       {/* Image Popup Modal */}
@@ -291,7 +314,9 @@ const Projects = () => {
               onClick={() => setSelectedImage(null)}
               className="absolute -top-12 right-0 text-white hover:text-cyan-400 transition-colors duration-200"
             >
-              <X size={32} />
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
             <img
               src={selectedImage}
