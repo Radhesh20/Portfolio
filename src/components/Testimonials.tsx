@@ -10,45 +10,32 @@ const Testimonials = () => {
       id: 1,
       name: 'Kishore',
       position: 'Student- Masters.',
-      //avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
       rating: 5,
-      text: 'Radhesh delivered an exceptional web application that exceeded our expectations. His attention to detail and technical expertise are remarkable. The project was completed on time and within budget.',
+      text: 'Radhesh delivered an exceptional web application that exceeded our expectations. The project was completed on time and within budget.',
       project: 'Library Management System'
     },
     {
       id: 2,
-      name: 'Michael Chen',
-      position: 'Founder, AppVenture',
-      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150',
+      name: 'Jonnie Jackson',
+      position: 'Content Creator - VoxCrime',
       rating: 5,
-      text: 'Working with Radhesh was a game-changer for our mobile app development. His innovative approach and problem-solving skills helped us create a user-friendly application that our customers love.',
-      project: 'Mobile App Development'
+      text: 'The logo design that he created for us perfectly captured our vision. The final result was simple and minimalistic yet captures the essence of our content.',
+      project: 'Logo and Brand Identity Design'
     },
     {
       id: 3,
-      name: 'Emily Rodriguez',
-      position: 'Marketing Director, CreativeFlow',
-      avatar: 'https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=150',
+      name: 'Vasanth',
+      position: 'Event Co-ordinator',
       rating: 5,
-      text: 'The logo and brand identity design that Radhesh created for us perfectly captured our vision. His creative process is collaborative and the final result was beyond what we imagined.',
-      project: 'Brand Identity Design'
+      text: 'Radhesh\'s certificate designs for our recent workshop event were excellent. They added a professional touch which enhanced the overall prestige of the event.',
+      project: 'Event Certificate Design'
     },
     {
       id: 4,
-      name: 'David Thompson',
-      position: 'Small Business Owner',
-      avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150',
-      rating: 5,
-      text: 'Radhesh transformed our social media presence with stunning Instagram post designs. Our engagement rates increased by 300% after implementing his creative solutions.',
-      project: 'Social Media Design'
-    },
-    {
-      id: 5,
-      name: 'Lisa Wang',
+      name: 'Avinesh',
       position: 'Content Creator',
-      avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150',
       rating: 5,
-      text: 'The YouTube thumbnails Radhesh designed for my channel significantly improved my click-through rates. His understanding of visual psychology and design trends is impressive.',
+      text: "His YouTube thumbnails for my Free Fire tournament practice live streams were phenomenal. He truly understands the pulse of gaming content design!",
       project: 'YouTube Thumbnail Design'
     }
   ];
@@ -62,17 +49,17 @@ const Testimonials = () => {
       setTestimonials(sampleTestimonials);
       localStorage.setItem('portfolioTestimonials', JSON.stringify(sampleTestimonials));
     }
-  }, []);
+  }, []); // Empty dependency array means this runs only once on mount
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [testimonials.length]);
+  }, [testimonials.length]); // Re-run if testimonials length changes (e.g., after initial load)
 
   const goToPrevious = () => {
     setCurrentIndex(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1);
@@ -83,7 +70,7 @@ const Testimonials = () => {
   };
 
   if (testimonials.length === 0) {
-    return null;
+    return null; // Or a loading spinner
   }
 
   const currentTestimonial = testimonials[currentIndex];
@@ -124,11 +111,7 @@ const Testimonials = () => {
 
               {/* Client Info */}
               <div className="flex items-center justify-center space-x-4">
-                <img
-                  src={currentTestimonial.avatar}
-                  alt={currentTestimonial.name}
-                  className="w-16 h-16 rounded-full object-cover border-2 border-cyan-400"
-                />
+                {/* Removed the avatar image */}
                 <div className="text-center">
                   <h4 className="text-white font-bold text-lg">{currentTestimonial.name}</h4>
                   <p className="text-gray-400">{currentTestimonial.position}</p>
