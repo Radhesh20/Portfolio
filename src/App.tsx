@@ -28,15 +28,15 @@ function App() {
 
   return (
     <div className="relative">
-      {/* <Navigation /> */}
-      {/* <Hero /> */}
-      {/* <About /> */}
-      {/* <Skills /> */}
-      {/* <Projects /> */}
-      {/* <Testimonials /> */}
-      {/* <Contact /> */}
-      {/* <Footer /> */}
-      {/* <ScrollToTop /> */}
+      <Navigation />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Testimonials />
+      <Contact />
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 }
