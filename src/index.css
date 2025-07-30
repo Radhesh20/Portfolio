@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00e1ff;
+}
+
+/* Selection color */
+::selection {
+  background-color: #00e1ff;
+  color: #111827;
+}
+
+/* Focus styles */
+.focus\:ring-cyan-400:focus {
+  --tw-ring-color: rgb(34 211 238);
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Animation delays */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+/* Custom gradient backgrounds */
+.bg-gradient-radial {
+  background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom shadows */
+.shadow-cyan {
+  box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.3);
+}
+
+.shadow-pink {
+  box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.3);
+}
+
+/* Hover transforms */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Custom button styles */
+.btn-gradient {
+  background: linear-gradient(135deg, #00e1ff 0%, #ff004c 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #00b8d4 0%, #d50036 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 225, 255, 0.3);
+}
+
+/* Text shimmer effect */
+.text-shimmer {
+  background: linear-gradient(90deg, #00e1ff, #ff004c, #00e1ff);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Pulse animation */
+.pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Floating animation */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Custom transitions */
+.transition-all-300 {
+  transition: all 300ms ease;
+}
+
+.transition-all-500 {
+  transition: all 500ms ease;
+}
+
+/* Enhanced backdrop blur */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+}
+
+/* Professional gradients */
+.bg-professional {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+}
+
+/* Smooth scroll behavior */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .text-responsive {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  
+  .backdrop-blur-xl {
+    backdrop-filter: blur(16px);
+  }
+}
+
+/* Dark mode improvements */
+body {
+  @apply bg-gray-900 text-white;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+/* Enhanced Letter animation for RADHESH */
+@keyframes letterIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.animate-letter-in {
+  animation: letterIn 0.8s ease-out forwards;
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(50px) rotateX(90deg);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  position: relative;
+}
+
+/* Individual letter colors on hover */
+.letter:nth-child(1):hover { /* R */
+  color: #ff0080 !important;
+  transform: translateY(-10px) rotateY(360deg) scale(1.2);
+  text-shadow: 0 0 30px rgba(255, 0, 128, 0.8);
+}
+
+.letter:nth-child(2):hover { /* A */
+  color: #00ffff !important;
+  transform: translateY(-10px) rotateX(360deg) scale(1.2);
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+}
+
+.letter:nth-child(3):hover { /* D */
+  color: #8000ff !important;
+  transform: translateY(-10px) rotateZ(360deg) scale(1.2);
+  text-shadow: 0 0 30px rgba(128, 0, 255, 0.8);
+}
+
+.letter:nth-child(4):hover { /* H */
+  color: #ff4000 !important;
+  transform: translateY(-10px) rotateY(-360deg) scale(1.2);
+  text-shadow: 0 0 30px rgba(255, 64, 0, 0.8);
+}
+
+.letter:nth-child(5):hover { /* E */
+  color: #00ff80 !important;
+  transform: translateY(-10px) rotateX(-360deg) scale(1.2);
+  text-shadow: 0 0 30px rgba(0, 255, 128, 0.8);
+}
+
+.letter:nth-child(6):hover { /* S */
+  color: #ff8000 !important;
+  transform: translateY(-10px) rotateZ(-360deg) scale(1.2);
+  text-shadow: 0 0 30px rgba(255, 128, 0, 0.8);
+}
+
+.letter:nth-child(7):hover { /* H */
+  color: #8040ff !important;
+  transform: translateY(-10px) rotateY(360deg) rotateX(180deg) scale(1.2);
+  text-shadow: 0 0 30px rgba(128, 64, 255, 0.8);
+}
+/* Gradient animation for KUMAR */
+.gradient-text {
+  background: linear-gradient(45deg, #00ffff, #ff0080, #8000ff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Enhanced float animation */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Glow effect for 3D scene */
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 40px rgba(255, 0, 128, 0.7));
+  }
+}
