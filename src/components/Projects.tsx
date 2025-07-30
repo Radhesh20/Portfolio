@@ -105,15 +105,10 @@ const Projects = () => {
   ];
 
   useEffect(() => {
-    // Load projects from localStorage or use sample data
-    const savedProjects = localStorage.getItem('portfolioProjects');
-    if (savedProjects) {
-      setProjects(JSON.parse(savedProjects));
-    } else {
-      setProjects(sampleProjects);
-      localStorage.setItem('portfolioProjects', JSON.stringify(sampleProjects));
-    }
-  }, []);
+    // Initialize projects directly from sampleData, no localStorage involved
+    setProjects(sampleProjects);
+  }, []); // Empty dependency array means this runs only once on mount
+
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
