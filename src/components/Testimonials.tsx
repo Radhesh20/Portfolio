@@ -8,12 +8,12 @@ const Testimonials = () => {
   const sampleTestimonials = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      position: 'CEO, TechStart Inc.',
-      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
+      name: 'Kishore',
+      position: 'Student- Masters.',
+      //avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
       rating: 5,
       text: 'Radhesh delivered an exceptional web application that exceeded our expectations. His attention to detail and technical expertise are remarkable. The project was completed on time and within budget.',
-      project: 'E-commerce Platform'
+      project: 'Library Management System'
     },
     {
       id: 2,
