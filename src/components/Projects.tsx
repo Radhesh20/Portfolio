@@ -44,7 +44,7 @@ const Projects = () => {
       title: 'Typing Speed Tester',
       category: 'web-development',
       description: 'Web app to test and improve typing speed. Displays random sentences, calculates WPM, and highlights errors in real-time.',
-      image: '',
+      image: 'public/typing.jpg',
       technologies: ['HTML', 'CSS', 'JavaScript', 'DOM Events'],
       demoUrl: 'https://radhesh20.github.io/TypeSpeedTester/',
       githubUrl: 'https://github.com/Radhesh20/TypeSpeedTester',
