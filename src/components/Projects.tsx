@@ -67,6 +67,9 @@ const Projects = () => {
       category: 'ui-design',
       description: 'Creative logo design for tech startups with modern aesthetics and scalable vector graphics.',
       image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400',
+      technologies: ['Photoshop', 'Canva', 'Social Media Strategy'],
+      demoUrl: '',
+      githubUrl: '',
       featured: false
     },
     {
