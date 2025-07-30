@@ -252,36 +252,7 @@ const Projects = () => {
                         </span>
                       ))}
                     </div>
-
-                    {/* Project Links */}
-                    {(project.category === 'web-development' || project.category === 'app-development') && (
-                      <div className="flex space-x-4">
-                      {project.demoUrl && (
-                        <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                        >
-                          <ExternalLink size={16} />
-                          <span className="text-sm font-medium">Live Demo</span>
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
-                        >
-                          <Github size={16} />
-                          <span className="text-sm font-medium">Source Code</span>
-                        </a>
-                      )}
-                      </div>
-                    )}
+                     
                   </div>
                 </div>
               ))}
