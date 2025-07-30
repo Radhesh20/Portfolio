@@ -11,7 +11,7 @@ const Testimonials = () => {
       name: 'Kishore',
       position: 'Student- Masters.',
       rating: 5,
-      text: 'Radhesh delivered an exceptional web application that exceeded our expectations. The project was completed on time and within budget.',
+      text: 'Radhesh delivered an exceptional web application that exceeded our expectations. His attention to detail and technical expertise are remarkable. The project was completed on time and within budget.',
       project: 'Library Management System'
     },
     {
@@ -19,7 +19,7 @@ const Testimonials = () => {
       name: 'Jonnie Jackson',
       position: 'Content Creator - VoxCrime',
       rating: 5,
-      text: 'The logo design that he created for us perfectly captured our vision. The final result was simple and minimalistic yet captures the essence of our content.',
+      text: 'The logo design that Radhesh created for us perfectly captured our vision. His creative process is collaborative and the final result was simple and minimalistic yet captures the essence of our content.',
       project: 'Logo and Brand Identity Design'
     },
     {
@@ -27,7 +27,7 @@ const Testimonials = () => {
       name: 'Vasanth',
       position: 'Event Co-ordinator',
       rating: 5,
-      text: 'Radhesh\'s certificate designs for our recent workshop event were excellent. They added a professional touch which enhanced the overall prestige of the event.',
+      text: 'Radhesh\'s certificate designs for our recent workshop event were truly exceptional. They added a professional and memorable touch, significantly enhancing the perceived value for our participants and elevating the overall prestige of the event.',
       project: 'Event Certificate Design'
     },
     {
@@ -35,20 +35,14 @@ const Testimonials = () => {
       name: 'Avinesh',
       position: 'Content Creator',
       rating: 5,
-      text: "His YouTube thumbnails for my Free Fire tournament practice live streams were phenomenal. He truly understands the pulse of gaming content design!",
+      text: "Radhesh's YouTube thumbnails for my Free Fire tournament practice live streams were phenomenal. His ability to capture the high-octane action and competitive energy in a single image drastically increased my live viewership and engagement. He truly understands the pulse of gaming content design!",
       project: 'YouTube Thumbnail Design'
     }
   ];
 
   useEffect(() => {
-    // Load testimonials from localStorage or use sample data
-    const savedTestimonials = localStorage.getItem('portfolioTestimonials');
-    if (savedTestimonials) {
-      setTestimonials(JSON.parse(savedTestimonials));
-    } else {
-      setTestimonials(sampleTestimonials);
-      localStorage.setItem('portfolioTestimonials', JSON.stringify(sampleTestimonials));
-    }
+    // Initialize testimonials directly from sampleData, no localStorage involved
+    setTestimonials(sampleTestimonials);
   }, []); // Empty dependency array means this runs only once on mount
 
   useEffect(() => {
@@ -111,7 +105,7 @@ const Testimonials = () => {
 
               {/* Client Info */}
               <div className="flex items-center justify-center space-x-4">
-                {/* Removed the avatar image */}
+                {/* Removed the avatar image and its onError fallback */}
                 <div className="text-center">
                   <h4 className="text-white font-bold text-lg">{currentTestimonial.name}</h4>
                   <p className="text-gray-400">{currentTestimonial.position}</p>
